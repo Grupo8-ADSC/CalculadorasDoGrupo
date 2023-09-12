@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financera</title>
+</head>
+<body>
+
+
+    <h4>Quantidade de servidor Datacenter da empresa:</h4>
+    <input id="input_servidores" type="Number"><br>
+    
+    <h4>Inserir tempo de inatividade em minutos</h4>
+    <input id="input_inatividade" type="Number"><br> 
+    
+    <h4>Valor do servidor por unidade</h4>
+    <input id="input_valor" type="Number"><br>
+
+    <h4>Quantidade de servidores Datacenter Quebrado</h4>
+    <input id="input_quebrado" type="Number"><br><br>
+
+    <button onclick="botao()">Calcular prejuizo</button>
+
+    <div id="div_mensagem"></div>
+
+    
+
+</body>
+</html>
+
+<script>
+
+    function botao() {
+
+        var valorSevidor = Number(input_valor.value);
+        var quatidade = Number(input_servidores.value);
+        var inatividade = Number(input_inatividade.value);
+        var quebrados = Number(input_quebrado.value);
+
+
+        var perdaEquipamentos = quebrados * valorSevidor;
+        var perdaTempo = inatividade * 9000;
+
+        var perdaTotal = perdaTempo + perdaEquipamentos;
+
+        div_mensagem.innerHTML = `<br> Você teve uma perda de equipamentos no total de <b style = color:red>${perdaEquipamentos} </b> e uma perda de inatividade de <b style = color:red>${perdaTempo}</b>`
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        cALCULADORA DO PREJUIZO
+
+    <p>Numero de equipamentos: <input id="ipt_quantidadeEQP"></p>
+    <p>Tempo parado (em minutos):<input id="ipt_tempo"></p>
+    <button onclick="Calcular()">Calcular</button>
+
+    <div id="div_msg"></div>
+
+</body>
+</html>
+<script>
+    function Calcular(){ 
+        var QTDequipamento = Number(ipt_quantidadeEQP.value);
+        var TempoDT = Number(ipt_tempo.value);
+
+        var percaDT = TempoDT * 8000; 
+        var ValorParado = percaDT * QTDequipamento;
+
+        div_msg.innerHTML = `<br> voce tem ${QTDequipamento} de equipamentos em funcionamento, caso tenha uma queda de ${TempoDT} <br> 
+         te custaria ${percaDT}R$ para só pelo tempo pado, mas isso para um unico servidor, caso corra o risco de parar metade de seu data center,<br>
+          o prejuizo iria para ${percaDT * (QTDequipamento/2)}R$. <br> 
+        . `
+    }
+     
+
+</script>

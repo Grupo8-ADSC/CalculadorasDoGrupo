@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <p id="paragrafo">Lucro Mensal:
+    <input type="text" id="ipt_lucro"> <br>
+  </p> 
+  <p id="paragrafo2">Quantas horas seu DataCenter ficou inativo?
+    <input type="number" id="ipt_horas"> <br>
+  </p>
+  <p id="paragrafo4">Quantos ADMS de DataCenters tem na sua empresa?
+    <input type="text" id="ipt_func">
+  </p>
+
+  <button onclick="calcular ()">Calcular Orçamento</button> 
+
+  <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+  function calcular () {
+    var lucro_mensal = Number(ipt_lucro.value)
+    var donwtime = Number(ipt_horas.value)
+    var funcionario = Number(ipt_func.value)
+  
+    // DOWNTIME HORAS
+    if (donwtime >= 1) {
+
+      // CALCULO DO PREJUZO POR HORA DO DOWNTIME
+      var perda_donwtime = 43.213 * 60
+      var perda_por_hora = perda_donwtime * donwtime
+
+      // VALOR DE FUNC QUE ADM OS DATACENTERS
+      var func_gasto = funcionario * 13.426 
+
+      // TOTAL DOS GASTOS O DOWNTIME PASSE DE 1 HORA
+      var prejuizo = perda_por_hora + func_gasto
+
+      // CALCULANDO PREJUIZO FINAL
+      var total = lucro_mensal - prejuizo
+
+      // CAlCULANDO O VALOR DA DIFERENCA
+      var diferenca = lucro_mensal - total
+
+      div_msg.innerHTML += `O gasto mensal com DownTimes e funcionarios para resolver esse problema, é de: R$${prejuizo} <br>`
+      div_msg.innerHTML += `Com esse gasto mental a sua Empresa está tendo perda de lucro com diferença de R$${diferenca} <br>
+                            O nosso trabalho, é justamente fazer esse Lucro mensal aumentar com nossa solução.`
+
+      ipt_lucro.value = ""
+      ipt_horas.value = ""
+      ipt_func.value = "" 
+  } 
+}
+
+</script>

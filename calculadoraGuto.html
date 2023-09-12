@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora PI/ALGORITIMOS</title>
+</head>
+<body>
+
+    
+
+    <h2> PREJUIZO DA SUA INDISPONIBILIDADE/DOWNTIME</h2>
+
+    <!-- // receber valor e quantiade de equipamentos -->
+
+    valor unitario do seu equipamento servidor: <br> <input type="number" name="" id="valor_equipamento"> <br> <br>
+    quantidade de servidores: <br> <input type="number" name="" id="quantidade_equipamentos"> <br> <br>
+    quantidade de equipamentos perdidos por umidade ou temperaratura: <br> <input type="number" name="" id="equipamentosPerdidos"> <br> <br>
+    qual tempo de downtime em minutos?: <br> <input type="number" name="" id="tempoDeDowntime"> <br> <br>
+    
+
+    <button onclick="valorPerdido()">Calcular Prejuizo</button>
+    <h4 id="mostrar"></h4>
+    
+    
+</body>
+</html>
+
+<script>
+    //calcular o prejuizo
+    function valorPerdido(){
+        var precoServidor = Number(valor_equipamento.value);
+        var qtdEquipamentos = Number(quantidade_equipamentos.value);
+        var equipPerdidos = Number(equipamentosPerdidos.value);
+        var tempoDowntime = Number(tempoDeDowntime.value);
+
+
+        var percaEquipamentos = equipPerdidos * precoServidor; // calcular o valor que ele cliente perdeu em equipamentos
+         
+        var percaDowntime = tempoDowntime * 9000; //  media de 9k dol por minuto off 
+
+        var percaTotal = percaDowntime + percaEquipamentos; // valor total perdido
+
+        var valorMitigado = percaTotal * 0.7;
+        var valorMitigado2 = percaTotal * 0.4;
+
+        mostrar.innerHTML = ` <br> voce teve ${equipPerdidos} dos seus ${qtdEquipamentos} equipamentos perdidos, que lhe deram prejuizo de ${percaEquipamentos}R$ <br> 
+        e te custaria ${percaEquipamentos}R$ para adquirir novos, ou gasto em manutenção para reparar estes dispostivos <br>
+        alem disso ${tempoDowntime} minutos de downtime que custaram por volta de ${percaDowntime}USD (ou ${percaDowntime * 5} reais) em media de prejuizo <br> <br>
+        
+        com nosso dispositvo você poderia mitigar sua perda por volta de 30 a 60% então ao inves de gastar ${percaTotal} 
+        voce gastaria por volta de ${valorMitigado} a ${valorMitigado2}. `
+    }
+ 
+
+</script>

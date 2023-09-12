@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOWNTIME</title>
+</head>
+<body>
+    <h1 style="color: rgb(7, 7, 115);"> Calculadora Downtime (inativo)</h1> <br>
+
+    Quantidade de servidores: <br> <input type="number" id="input_server"> <br>
+    Valor unidade dos servidores: <br> <input type="number" id="input_qntdserv"> <br>
+    Perdas por umidade e temperaratura: <br> <input type="number" id="input_perda"> <br>
+     Inatividade dos servidores por minuto: <br> <input type="number" id="input_time"> <br>
+     <button onclick="calcular()"> <H5 style="color: darkred;">Hora do Upgrade</H5></button> <br>
+     <div id="mensagem"></div>
+</body>
+</html>
+<script>
+    function calcular(){
+        var servidores = Number (input_server.value)
+        var uniserver = Number (input_qntdserv.value)
+        var perdas = Number (input_perda.value)
+        var downtime = Number (input_time.value)
+
+        var percaservidorreais = uniserver * perdas 
+     var servidordolar = uniserver / 5
+     var percaservidordolar = servidordolar * perdas
+        var percadetempodolar = downtime * 9000
+        var percatemporeais = percadetempodolar * 5
+
+        var percageral = percatemporeais * percaservidorreais
+        var percadolar = percageral / 5
+
+        var valor1real = percageral * 0.7
+        var valor2real = percageral * 0.4
+        var valor1dolar = percadolar * 0.7
+        var valor2dolar = percadolar  * 0.4
+
+        mensagem.innerHTML= `você está perdendo USD${percadetempodolar} em dolar por minuto dos seus servidores parados, <br>
+         O que significa uma perda de R$${percatemporeais} em Reais. <br> <br> 
+        
+         E por conta da umidade e temperatura fora de ajuste dos seus servidores você perde USD${percaservidordolar} em dolares. <br> 
+         O que em reais você perde R$${percaservidorreais}.
+         <br>
+         você está perdendo um total de R$${percageral}em Reais e USD${percadolar} em Dolar <br>
+        <br> 
+        Com a nossa solução você pode reduzir suas perdas por volta de 30% a 60% de R$${valor1real} <br> até R$${valor2real} em reais!! <br> <br>
+        e em dolares de USD${valor1dolar} <br> até USD${valor2dolar}.
+        <br>
+        Vamos dar um upgrade?`
+
+    }
+</script>

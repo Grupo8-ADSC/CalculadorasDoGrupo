@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Quantos servidores são perdidos devido a temperatura?: <br> <input id="input_Servidores"
+     type="Number"> <br>
+     Qual o valor unitario de cada servidor?:  <br> <input id="input_ValorServidores"
+     type="Number"> <br>
+    Insira a Temperatura atual do seu data center <br> <input id="input_Temperatura" 
+    type="Number"> <br>
+    Insira a Umidade atual do seu data center: <br><input id="input_Umidade" 
+    type="Number"><br>
+    Insira o Tempo de inatividade: <br><input id="input_Tempo" 
+    type="Number"><br>
+    Custos médios associados ao aumento de temperatura : <br> <input id="input_AumentoTemperatura" 
+    type="Number"> C°<br>
+    Custos médios associados à redução de umidade: <br> <input id="input_ReduçãoUmidade"
+     type="Number">%<br>
+    Insira os Custos médios associados ao tempo de inatividade: <br> <input id="input_TempoInatividade"
+        type="Number"><br>
+    <button onclick=Calculo()> Calcular Prejuízo </button>
+    <div id= "div_Calculadora"></div>
+</body>
+
+</html>
+<script>
+    function Calculo() {
+                            // Variaveis 
+        var Temperatura = Number(input_Temperatura.value)
+        var Umidade = Number(input_Umidade.value)
+        var Tempo = Number(input_Tempo.value)
+        var Custos_Temperatura = Number(input_AumentoTemperatura.value)
+        var Redução_Umidade = Number(input_ReduçãoUmidade.value)
+        var Custos_Tempo = Number(input_TempoInatividade.value)
+        var Servidores= Number (input_Servidores.value)
+        var ValorServidores=  Number(input_ValorServidores.value)
+
+
+                         // Calculos de Prejuízo
+        var PrejuízoTemperatura = (Temperatura * Custos_Temperatura)
+        var PrejuízoUmidade = (Umidade * Redução_Umidade)
+        var PrejuízoInatividade = (Tempo* Custos_Tempo)
+        var Prejuízo_Servidores= (Servidores*ValorServidores)
+        var PrejuízoTotal= (PrejuízoTemperatura + PrejuízoUmidade + PrejuízoInatividade + Prejuízo_Servidores)
+        var Desconto_final= (PrejuízoTotal* 0.30)
+        var desconto_final2= (PrejuízoTotal*0.60)
+
+        div_Calculadora.innerHTML= `Com a nossa Solução os gastos totais podem variar entre
+         R$${ Desconto_final} e R$${desconto_final2} com desconto de 30 a 60% sobre o valor final de R$${PrejuízoTotal} `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+</script>

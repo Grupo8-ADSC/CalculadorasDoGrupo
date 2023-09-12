@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Rabello</title>
+</head>
+<body>
+    Quantidade de servidores: <br>
+    <input id="ipt_qtdServ"> <br>
+    Quantas vezes o servidor cai por dia: <br>
+    <input id="ipt_qtdQueda"> <br>
+    Quantidade de servidores perdidos: <br>
+    <input id="ipt_perdaServ"> <br>
+    Valor gasto em manutenção por servidor: <br>
+    <input id="ipt_manutencao"> <br>
+    Quantidade de funcionários para realizar o monitoramento: <br>
+    <input id="ipt_funcionario"> <br>
+    Salário de cada funcionário: <br>
+    <input id="ipt_salario"> <br>
+    
+    
+<button onclick="calcular()"> Calcular prejuízos  </button> <div id="exibir" ></div>
+</body>
+</html>
+
+<script>
+    function calcular(){
+        var qtdServ = Number(ipt_qtdServ.value)
+        var qtdQueda = Number(ipt_qtdQueda.value)
+        var perdaServ = Number(ipt_perdaServ.value)
+        var manutencao = Number(ipt_manutencao.value)
+        var funcionario = Number(ipt_funcionario.value)
+        var salario = Number(ipt_salario.value)
+        
+//////  ORÇAMENTO
+        var intakeTemp = Number(150 * qtdServ)
+        var exhaustTemp = Number(150 * qtdServ)
+        var resfTemp = Number()
+        var temp = Number(150)
+        var servUmid = Number()
+        var umid = Number(150)
+        
+        if(qtdServ >= 1 && qtdServ <= 5){
+            resfTemp = 50
+            servUmid = 50
+        }
+        if(qtdServ >= 6 && qtdServ <= 10){
+            resfTemp = 100
+            servUmid = 100
+        }
+        if(qtdServ >= 11 && qtdServ <= 15){
+            resfTemp = 150
+            servUmid = 150
+        }
+        if(qtdServ >= 16 && qtdServ <= 20){
+            resfTemp = 200
+            servUmid = 200
+        }
+   
+        var valorQueda = 42213 * qtdQueda
+        var valorManutencao = perdaServ * manutencao
+        var salarioTotal = funcionario * salario
+        var prejuTotal = valorQueda + valorManutencao + salarioTotal 
+        
+        var precoswitch = 3000
+        var instalacao = 2000
+        var orcamento = intakeTemp + exhaustTemp + resfTemp + temp + servUmid + umid + precoswitch + instalacao
+        var lucro3 = (prejuTotal - salario) * 3 
+        var lucro6 = (prejuTotal - salario) * 6
+        var lucro12 = (prejuTotal - salario) * 12
+        
+        
+exibir.innerHTML= `<b style="color: red">Prejuizo total: R$${prejuTotal}</b> <br> <br>
+
+Gastos iniciais no projeto: R$${orcamento} <br><br>
+
+<b style="color: green">
+Lucro nos meses seguintes <br>
+• 3 meses: R$${lucro3} <br>
+• 6 meses: R$${lucro6} <br>
+• 1 ano: R$${lucro12} <br>
+</b>`
+    }
+</script>
